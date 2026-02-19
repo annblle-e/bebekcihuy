@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overflow-y: scroll; overscroll-behavior-y: none">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -399,3 +399,369 @@ function slide(direction){
 
 </body>
 </html>
+min-height:100vh;
+height:auto;
+overflow-x:hidden;
+  background:var(--dominant);
+  animation:fadeIn .8s ease;
+}
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+  overflow-x:hidden;
+}
+
+/* ===== SLIDER FRAME ===== */
+
+.container{
+  display:flex;
+  width:300%;
+min-height:100vh;
+height:auto;
+overflow-x:hidden;
+
+  transition:transform .9s cubic-bezier(.77,0,.18,1);
+}
+
+.section{
+ width:100vw;
+  min-height:100vh;
+  height:auto;
+  flex-shrink:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  position:relative;
+}
+
+/* ===== TITLE ===== */
+
+h1{
+  font-weight:900;
+  font-size: clamp(3.5rem, 5vw, 5rem);
+  color: #fff3ca;
+  /* OUTLINE HITAM */
+  -webkit-text-stroke: 3px #000000;
+
+  /* DEPTH HITAM */
+  text-shadow:
+    4px 4px 0 #160b00,
+    8px 8px 0 rgba(0,0,0,0.5),
+    0 0 20px rgba(0,0,0,0.3);
+  margin-bottom:20px;
+  z-index:2;
+}
+
+
+/* ===== BUTTON ===== */
+.arrowbut{
+  width:110px;
+  padding:4px;
+  color: #000000;
+  margin:10px;
+  background:linear-gradient(180deg,#FFA62B,#FF8C1A);
+  border:4px solid var(--outline);
+  border-radius:18px;
+  font-weight:800;
+  font-size:1.3rem;
+  cursor:pointer;
+  box-shadow:
+    0 8px 0 var(--outline),
+    0 15px 20px rgba(0,0,0,0.2);
+  transition:all .15s ease;
+  text-align:center;
+}
+.arrowbut:hover{
+  transform:translateY(-4px) scale(1.05);
+}
+
+.arrowbut:active{
+  transform:translateY(6px) scale(.95);
+  box-shadow:0 2px 0 var(--outline);
+  background:var(--accent);
+}
+
+.button{
+  width:220px;
+  padding:4px;
+  color: #000000;
+  margin:10px;
+  background:linear-gradient(180deg,#FFA62B,#FF8C1A);
+  border:4px solid var(--outline);
+  border-radius:18px;
+  font-weight:800;
+  font-size:1.3rem;
+  cursor:pointer;
+  box-shadow:
+    0 8px 0 var(--outline),
+    0 15px 20px rgba(0,0,0,0.2);
+  transition:all .15s ease;
+  text-align:center;
+}
+
+.button.pink{
+  background:linear-gradient(180deg,#FF6F91,#FF4D6D);
+  color:#fff;
+}
+
+
+
+.button:hover{
+  transform:translateY(-4px) scale(1.05);
+}
+
+.button:active{
+  transform:translateY(6px) scale(.95);
+  box-shadow:0 2px 0 var(--outline);
+  background:var(--accent);
+}
+
+/* ===== HOME ===== */
+
+#home{
+  overflow:hidden;
+}
+.arrow-group{
+  display:flex;
+  gap:5px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:nowrap;
+}
+.bg-slideshow{
+  position:absolute;
+  inset:0;
+  z-index:-1; /* UBAH JADI -1 */
+  pointer-events:none;
+  animation:wiggle 6s ease-in-out infinite;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--secondary); /* warna fallback */
+}
+.bg-slideshow::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(255,166,43,0.4); /* orange overlay */
+}
+
+
+.bg-slideshow img{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  opacity:0;
+  transition:opacity 1s ease;
+  filter:brightness(0.6) saturate(0.8) blur(2px);
+}
+
+
+.section{
+  scroll-snap-align:start;
+}
+
+
+.bg-slideshow img.active{
+  opacity:1;
+}
+
+@keyframes wiggle{
+  0%{transform:rotate(0deg)}
+  50%{transform:rotate(1.5deg)}
+  100%{transform:rotate(0deg)}
+}
+
+.character{
+  width:280px;
+  transition:transform .3s ease;
+}
+
+.character:hover{
+  transform:scale(1.05) rotate(2deg);
+}
+
+
+/* ===== COMMISSION ===== */
+
+#commission{
+  background:var(--secondary);
+}
+
+.slider-box{
+  width:min(90%,700px);
+  height:350px;
+  overflow:hidden;
+  border:4px solid var(--outline);
+  border-radius:20px;
+  box-shadow:0 8px 0 var(--outline);
+  background:white;
+  margin-bottom:20px;
+}
+
+.slide-track{
+  display:flex;
+  height: 100%;
+  transition:transform .6s ease;
+}
+
+.slide-track img{
+ width:100%;
+ height: 100%;
+  flex:0 0 100%;
+  object-fit:cover;
+}
+
+.price-box{
+  background:white;
+  border:4px solid var(--outline);
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 8px 0 var(--outline);
+  text-align:center;
+  max-width:500px;
+}
+
+.price-box p{
+  margin:10px 0;
+  font-weight:600;
+}
+
+.highlight{
+  color:var(--accent);
+  font-weight:900;
+  font-size:1.2rem;
+}
+
+.usr{
+    color: #fff3ca;
+    font-weight: 500;
+    font-size: large;
+    margin-bottom: -0px;
+}
+
+/* ===== CONTACT ===== */
+
+#contact{
+  background:var(--accent);
+  color:white;
+}
+
+@media(max-width:768px){
+  .button{
+    width:220px;   /* tetap konsisten */
+    max-width:90%; /* tapi kalau layar kecil banget masih aman */
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container" id="slider">
+
+<!-- ===== HOME ===== -->
+<section class="section" id="home">
+
+<div class="bg-slideshow">
+ 
+  <img src="bg1.jpg"class="active">
+  <img src="bg2.jpg">
+  <img src="bg3.jpg">
+  <img src="bg4.jpg">
+</div>
+<p class="usr">@bebekcihuy__</p>
+<h1>BebekCihuy!</h1>
+
+
+<img src="bebek.png" class="character">
+
+<button class="button pink" onclick="goTo(1)">Commission</button>
+<button class="button" onclick="window.open('https://www.instagram.com/bebekcihuy__?igsh=ZHloaGFjZjVmZXQ3','_blank')">Instagram</button>
+<button class="button" onclick="window.open('https://vm.tiktok.com/ZSHKaNoCLhnG9-V2APD/','_blank')">TikTok</button>
+<button class="button" onclick="window.open('https://vgen.co/bebekcihuy__','_blank')">VGen</button>
+
+</section>
+
+<!-- ===== COMMISSION ===== -->
+<section class="section" id="commission">
+
+<h1>Commission</h1>
+
+<div class="slider-box">
+  <div class="slide-track" id="artSlider">
+    <img src="./image.png">
+    <img src="./image2.png">
+    <img src="./image1.png">
+  </div>
+</div>
+
+<div class="arrow-group">
+  <button class="arrowbut" onclick="slide(-1)">◀</button>
+  <button class="arrowbut" onclick="slide(1)">▶</button>
+</div>
+
+
+<div class="price-box">
+  <p><strong>Bust Up</strong> — <span class="highlight">75rb / 12 USD</span></p>
+  <p><strong>Half Body</strong> — <span class="highlight">95rb / 15 USD</span></p>
+  <p><strong>Full Body</strong> — <span class="highlight">110rb / 18 USD</span></p>
+  <br>
+  <p>Payment is made in the beginning then I'll start working on your commission!</p>
+</div>
+
+<button class="button pink" onclick="goTo(2)">I'm Interested!</button>
+<button class="button" onclick="goTo(0)">Go Back</button>
+
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="section" id="contact">
+
+<h1>Contact</h1>
+
+<button class="button" onclick="window.open('https://www.instagram.com/bebekcihuy__?igsh=ZHloaGFjZjVmZXQ3','_blank')">Message on Instagram</button>
+<button class="button" onclick="window.open('https://vm.tiktok.com/ZSHKaNoCLhnG9-V2APD/','_blank')">Message on TikTok</button>
+<button class="button" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdlHOeAR9D1212BmZ4AmyyPoDYyXCaI8UW9A-D43uIsEwQ4xw/viewform?usp=dialog','_blank')">Fill Google Form</button>
+<button class="button" onclick="window.open('https://vgen.co/bebekcihuy__/service/illustration-comission-full-rendered-/926554a3-2def-42a6-b96e-28a7c8da998a','_blank')">Order from Vgen</button>
+
+<button class="button pink" onclick="goTo(1)">Go Back</button>
+
+</section>
+
+</div>
+
+<script>
+function goTo(index){
+  document.getElementById("slider").style.transform =
+  "translateX(-"+ index * 100 +"vw)";
+}
+
+/* Background slideshow */
+let bgSlides=document.querySelectorAll(".bg-slideshow img");
+let current=0;
+setInterval(()=>{
+  bgSlides[current].classList.remove("active");
+  current=(current+1)%bgSlides.length;
+  bgSlides[current].classList.add("active");
+},3000);
+
+/* Commission slider */
+let slideIndex=0;
+function slide(direction){
+  let slider=document.getElementById("artSlider");
+  let total=slider.children.length;
+  slideIndex+=direction;
+  if(slideIndex<0) slideIndex=total-1;
+  if(slideIndex>=total) slideIndex=0;
+  slider.style.transform="translateX(-"+ slideIndex*100 +"%)";
+}
+</script>
+
+</body>
+</html>
+
